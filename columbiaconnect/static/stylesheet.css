@@ -96,6 +96,25 @@ header {
 	background: red;
 	margin: 10px;
 	padding: 0;
+	background: url("crown.png");
+	border: 1px solid #666;
+	color: #eeeeee;
+	text-shadow: 1px 1px 1px black;
+}
+
+.test:hover {
+	cursor: pointer;
+	box-shadow: 0px 0px 8px #75B2DD;
+	color: #ffffff;
+	text-shadow: 1px 1px 1px black;
+}
+
+.groupname {
+	display: block;
+	width: 190px;
+	background: #333;
+	padding: 5px;
+	opacity: 0.8;
 }
 
 #main-left {
@@ -119,6 +138,7 @@ header {
 }
 
 select {
+	color: #858585;
 	font-family: Sansation;
 	height: 30px;
 	font-size: 16px;
@@ -227,6 +247,10 @@ p {
 }
 
 a:link, a:visited {
+	transition: 0.25s;
+	-webkit-transition: 0.25s;
+	-moz-transition: 0.25s;
+	-o-transition: 0.25s;
 	text-decoration: none;
 	color: #2371A8;
 }

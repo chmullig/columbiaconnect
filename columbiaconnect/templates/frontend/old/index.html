@@ -1,0 +1,18 @@
+
+{%extends "frontend/base.html"%}
+
+{%block content%}
+			<div id="hero">
+			</div>
+			<div id="stuff">
+				<span class="test">{{ current_date }}</span>
+				<span class="test"> {{ logged_in }} </span>
+				{% for connex in connexes %}
+				<span class="test">{{ connex }}</span>
+				{% endfor %}
+			</div>
+{%endblock%}
+
+{% block footer %}
+<p> Oh hai there </p>
+{%endblock %}

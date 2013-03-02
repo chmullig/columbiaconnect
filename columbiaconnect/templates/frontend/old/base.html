@@ -14,22 +14,16 @@
 		<div id="wrapper">
 			<header>
 				<div id="header-left">
-					<a href="/" id="logo"></a>
+					<a href="index.html" id="logo"></a>
 				</div>
 				<div id="header-right">
 					<a href="#signup" class="header-link fancybox">Sign Up</a> 
-					<a href="#" class="header-link" data-dropdown="#login-menu" data-horizontal-offset="-12" data-vertical-offset="-15">Log In</a> 
+					<a href="#" class="header-link" data-dropdown="#login-menu" data-horizontal-offset="-12" data-vertical-offset="-10">Log In</a> 
 				</div>
 			</header>
 
-			{%block content%} {%endblock%}
-			
-
-			<footer>
-				<hr class="footerhr">
-				<p class="footer-text">Created by Chris Mulligan, Alex Dong, & Martin Li<br/>
-				for <a href="http://www.hackcolumbia.org">HackColumbia</a>, Columbia University</p>
-			</footer>
+			{% block content %} {% endblock%}
+			{% block footer %} {% endblock %}
 		</div>
 
 		<section id="signup">
@@ -82,10 +76,8 @@
 		</script>
 
 		<script>
-		$(document).ready(function(){
-			$(".test").each(function(index) {
-    			$(this).hide().delay(275*index).fadeIn(750);
-			});
+		$(".test").each(function(index) {
+    		$(this).hide().delay(275*index).fadeIn(750);
 		});
 		</script>
 

@@ -1,0 +1,24 @@
+
+{%extends "frontend/base.html"%}
+
+{%block content%}
+			<div id="hero">
+			</div>
+			<form id="create_group_form" method="post" action = "/create_group_call/">
+				{% csrf_token %}
+				<div id="stuff">
+					Group Name:
+					<input type="text" name="group_name" placeholder="Columbia Starcraft" class="signup-field">
+					Category </br>
+					<select name = "category">
+						{% for category in categories %}
+							<option value="{{ category }}"> {{ category }} </option>
+						{%endfor%}
+					</select>
+					<br/>
+					Description
+					<input type="text" name="description" placeholder="Enter description here." class="signup-field">
+					<button type="submit" name="submit" class="big-button">Create Group</button>
+				</div>
+			</form>
+{%endblock%}

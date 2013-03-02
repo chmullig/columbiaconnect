@@ -18,16 +18,16 @@ urlpatterns = patterns('',
     url(r'^logout/', logout_page),
     url(r'^signup/', signup_page),
     url(r'^query/', query_page),
-    url(r'^groups/', groups_page),
-    url(r'^create_group/', create_group),
+    url(r'^create_group/', create_groups_page),
+    url(r'^create_group_call/', create_group),
     url(r'^$', home),
     # Uncomment the admin/doc line below to enable admin documentation:
     url(r'^admin/doc/', include('django.contrib.admindocs.urls')),
-
     # Uncomment the next line to enable the admin:
     url(r'^admin/', include(admin.site.urls)),
     url (r'^site_media/(?P<path>.*)$', 'django.views.static.serve',
         {'document_root': settings.STATIC_ROOT}),
+    url(r'^.+', details),
 )
 
 urlpatterns += staticfiles_urlpatterns()
