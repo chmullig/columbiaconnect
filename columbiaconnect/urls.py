@@ -1,7 +1,10 @@
 from django.conf.urls import *
+from columbiaconnect.views import *
+from columbiaconnect.models import *
 # Uncomment the next two lines to enable the admin:
 from django.contrib import admin
 from django.conf import settings
+
 admin.autodiscover()
 
 
@@ -9,7 +12,7 @@ from views import home
 
 urlpatterns = patterns('',
     # Examples:
-    # url(r'^$', 'columbiaconnect.views.home', name='home'),
+    url(r'^$', 'columbiaconnect.views.home', name='home'),
     # url(r'^columbiaconnect/', include('columbiaconnect.foo.urls')),
     url(r'^home/', home),
 
