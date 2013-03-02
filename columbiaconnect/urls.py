@@ -1,8 +1,10 @@
 from django.conf.urls import *
-from columbiaconnect.views import home
 # Uncomment the next two lines to enable the admin:
 from django.contrib import admin
 admin.autodiscover()
+
+
+from views import home
 
 urlpatterns = patterns('',
     # Examples:

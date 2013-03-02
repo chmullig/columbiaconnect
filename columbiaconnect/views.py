@@ -1,7 +1,6 @@
 
 from django.shortcuts import render_to_response
 from django.http import HttpResponse
-import frontend
 
 def home(request):
 	homepage = 'frontend/index.html'
