@@ -135,10 +135,11 @@ def details(request):
 		return redirect('home')
 	
 def users(request):
-	template = 'frontend/member.html'
+	template = 'frontend/member.html'	
 	targetPage = request.path[7:]
 	print targetPage
 	users = User.objects.filter(email=targetPage)
+	print 
 
 	if request.user.is_authenticated():
 		lin = 'inherit'
@@ -155,11 +156,12 @@ def users(request):
 		return redirect('home')
 
 def join_group(request):
-	group_name = request.path[12:]
-	group = Connex.objects.filter(name = group_name)
-	org_site = '/usergroup/' + group_name
+	if request.user.is_authenticated():
+		group_name = request.path[12:]
+		group = Connex.objects.filter(name = group_name)
+		org_site = '/usergroup/' + group_name
 
-	if(group):
-		group[0].users.add(request.user)
+		if(group):
+			group[0].users.add(request.user)
 		
 	return redirect(org_site)
