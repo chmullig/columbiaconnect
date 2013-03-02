@@ -103,7 +103,11 @@ header {
 	width: 670px;
 	height: 475px;
 	margin: 0 0 5px 0;
-	padding: 10px;
+	padding: 10px 10px 20px 10px;
+}
+
+#squares {
+	clear: both;
 }
 
 #main-right {
@@ -114,10 +118,17 @@ header {
 	padding: 10px;
 }
 
+select {
+	font-family: Sansation;
+	height: 30px;
+	font-size: 16px;
+	font-family: 'Open Sans';   
+}
+
 input[type=search] {  
 	height: 30px;
 	font-size: 16px;
-	margin: 20px auto;
+	margin: 10px auto 20px auto;
 	display: block; 
 	width: 85%;
 	font-family: 'Open Sans';                
@@ -190,7 +201,6 @@ input:focus {
 /* Footer */
 footer {
 	clear: both;
-	margin-top: 10px;
 	text-align: center;
 	font-size: 12px;
 }
