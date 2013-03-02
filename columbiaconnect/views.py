@@ -15,7 +15,7 @@ import datetime
 LIMIT = 6
 
 def home(request):
-	stuff = {"connexes" : Connex.objects.order_by("name")[:LIMIT]}
+	stuff = {"connexes" : Connex.objects.order_by("?")[:LIMIT]}
 	template = 'frontend/index.html'
 	if request.user.is_authenticated():
 		stuff.update({'logged_in': 'inherit', 'logged_off': 'none', 'user_name':request.user})
