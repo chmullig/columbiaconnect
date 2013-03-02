@@ -3,10 +3,19 @@
 
 {%block content%}
 			<div id="hero">
+				<h1 style="margin-top: 210px; margin-left: 15px;">&#187; {{ group_name }}</h1>
 			</div>
-			<div id="stuff">
-				<h1>{{ group_name }}</h1><br>
-				Category: {{group_category }} </br>
-				Group Description: {{ group_description }} </br>
+			<div id="main-left">
+				<h1>Group Description:</h1>
+				<p>{{ group_description }}</p>
+				<br>
+				<h1>Message Board</h1>
+			</div>
+			<div id="main-right">
+				<form>
+				<button type="submit" name="joingroup" class="bigger-button">Join Group</button><br>
+				</form>
+				<h1>Members List</h1>
+			</div>
 
 {%endblock%}
