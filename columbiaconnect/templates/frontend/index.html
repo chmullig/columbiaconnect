@@ -17,7 +17,6 @@
 				</select>
 			</div>
 			<div id="squares">
-				<span class="test">Logged in? {{ logged_in }} </span>
 				{% for connex in connexes %}
 				<a href="usergroup/{{ connex.name }}"><span class="test"><span class="groupname">{{ connex.name }}</span></span></a>
 				{% endfor %}
@@ -40,5 +39,7 @@
 			<hr>
 			<h1>Create New Group</h1>
 			<p>Can't find what you're looking for? <a href="create_group">Create a new group</a>!</p>
+
+			<div style="display:{{ requires_in }};"> Please create an account or sign in to create a new group. </div>
 		</div>
 {%endblock%}
