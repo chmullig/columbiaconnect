@@ -1,18 +1,37 @@
 
 {%extends "frontend/base.html"%}
 
-{%block content%}
-			<div id="hero">
-			</div>
-			<div id="stuff">
-				<span class="test">{{ current_date }}</span>
-				<span class="test"> {{ logged_in }} </span>
-				{% for connex in connexes %}
-				<span class="test">{{ connex }}</span>
-				{% endfor %}
-			</div>
-{%endblock%}
 
-{% block footer %}
-<p> Oh hai there </p>
-{%endblock %}
+{%block content%}
+	<div id="hero">
+		<p class="herotext">ColumbiaConnect is the quickest way to find and meet up with other Columbia students with similar interests.</p>
+		<p class="herotext">Browse/search existing groups or create your own below!</p>
+		</div>
+		<div id="main-left">
+			<h1>Featured Groups</h1>
+			<span class="test">Alexklaf jal;skdkj safj;asj k fsajkdfkjallj;kfd jlkfsda;jlkf</span>
+			<span class="test">{{ logged_in }} </span>
+			<span class="test">a</span>
+			<span class="test">big</span>
+			<span class="test">fat</span>
+			<span class="test">loser</span>
+		</div>
+		<div id="main-right">
+			<form>
+				<input type="search" name="search" results="5" placeholder="Search...">
+			</form>
+			<div id="categories">
+				<h1>Categories</h1>
+				<a href="#">Academics</a> ·
+				<a href="#">Games</a> ·
+				<a href="#">Languages</a>
+				<a href="#">Miscellaneous</a> ·
+				<a href="#">Music</a> ·
+				<a href="#">Sports</a>
+				<a href="#">Weird Sexual Fetishes</a>
+			</div>
+			<hr>
+			<h1>Create New Group</h1>
+			<p>Can't find what you're looking for? <a href="#">Create a new group</a>!</p>
+		</div>
+{%endblock%}
