@@ -1,10 +1,13 @@
 
 from django.shortcuts import render_to_response
 from django.http import HttpResponse
+from django.template.loader import get_template
+import datetime
 
 def home(request):
-	homepage = 'frontend/index.html'
-	return HttpResponse(homepage)
+	now = datetime.datetime.now()
+	template = 'frontend/index.html'
+	return render_to_response(template, {'current_date': now})
 	
 def current_datetime(request):
 	now = datetime.datetime.now()
