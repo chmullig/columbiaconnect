@@ -18,7 +18,7 @@
 			</div>
 			<div id="squares">
 				{% for connex in connexes %}
-				<a href="usergroup/{{ connex.name }}"><span class="test"><span class="groupname">{{ connex.name }}</span></span></a>
+				<a href="usergroup/{{ connex.name }}"><span class="test" style="background: url(\"/static/{{ connex.name }}.jpg\""><span class="groupname">{{ connex.name }}</span></span></a>
 				{% endfor %}
 			</div>
 		</div>
