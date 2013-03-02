@@ -57,6 +57,15 @@ def logout_page(request):
 def create_groups_page(request):
 	stuff = {"categories" : Category.objects.order_by("name")}
 	template = 'frontend/create_group.html'
+
+	if request.user.is_authenticated():
+		stuff['logged_in'] = 'inherit'
+		stuff['logged_off'] = 'none'
+		stuff['user_name'] = request.user
+	else:
+		stuff['logged_in'] = 'none'
+		stuff['logged_off'] = 'inherit'
+
 	return render_to_response(template, stuff, context_instance=RequestContext(request))
 		
 def create_group(request):
@@ -82,11 +91,20 @@ def query_page(request):
 def details(request):
 	template = 'frontend/groups.html'
 	targetPage = request.path.strip('usergroup/')
-
 	connexes = Connex.objects.filter(name=targetPage)
+
+	if request.user.is_authenticated():
+		lin = 'inherit'
+		loff = 'none'
+		user = request.user
+	else:
+		lin = 'none'
+		loff = 'inherit'
+		user = ''
+
 	if(connexes):
 		group_category = connexes[0].categories.values_list
-		return render_to_response(template, {'group_name':connexes[0].name, 'group_category':group_category,  'group_description':connexes[0].description})
+		return render_to_response(template, {'group_name':connexes[0].name, 'group_category':group_category,  'group_description':connexes[0].description, 'logged_in':lin, 'logged_off': loff, 'user_name':user})
 	else:
 		return redirect('home')
 	
