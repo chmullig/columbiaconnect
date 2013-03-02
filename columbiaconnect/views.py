@@ -81,7 +81,7 @@ def query_page(request):
 
 def details(request):
 	template = 'frontend/groups.html'
-	targetPage = request.path.strip('/')
+	targetPage = request.path.strip('usergroup/')
 
 	connexes = Connex.objects.filter(name=targetPage)
 	if(connexes):

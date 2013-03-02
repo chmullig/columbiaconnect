@@ -19,7 +19,7 @@
 			<div id="squares">
 				<span class="test">Logged in? {{ logged_in }} </span>
 				{% for connex in connexes %}
-				<span class="test">a</span>
+				<a href="usergroup/{{ connex.name }}"><span class="test"><span class="groupname">{{ connex.name }}</span></span></a>
 				{% endfor %}
 			</div>
 		</div>
