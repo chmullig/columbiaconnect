@@ -31,6 +31,7 @@ class Connex(models.Model):
     description = models.TextField(blank=True)
     users = models.ManyToManyField(User, blank=True)
     categories = models.ManyToManyField(Category, blank=True)
+    datecreated = models.DateTimeField(auto_now=True)
     def _slugify(self):
         return slugify(name)
     url = property(_slugify)
