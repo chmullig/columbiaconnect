@@ -85,7 +85,14 @@ def query_page(request):
 	if request.GET.has_key("search"):
 		term = request.GET.has_key("search")
 		connexes.filter(name__icontains=term)
-		response_data["connexes"] = connexes.values_list('name', flat=True)[0]
+	if request.GET.has_key("category"):
+		catname = request.GET["category"]
+		cat = Category.objects.get(name=catname)
+		print dir(connexes)
+		connexes.filter(categories__id__exact=cat.id)
+
+	print connexes
+	response_data["connexes"] = list(connexes.values_list('name', flat=True))
 	return HttpResponse(json.dumps(response_data, ensure_ascii=False), content_type="application/json")
 
 def details(request):
