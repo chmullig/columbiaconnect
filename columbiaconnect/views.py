@@ -1,4 +1,5 @@
-import json
+
+import json, os
 from django.shortcuts import render_to_response, redirect
 from django.http import HttpResponse
 from django.template.loader import get_template
@@ -135,6 +136,17 @@ def details(request):
 				, context_instance=RequestContext(request))
 	else:
 		return redirect('home')
+
+
+def groupimage(request):
+	targetPage = request.path[11:]
+	image_data = open("columbiaconnect/static/crown.jpg").read()
+	imgfile = "columbiaconnect/static/"+targetPage
+	if os.path.exists(imgfile):
+		image_data = open(imgfile).read()
+	response = HttpResponse(image_data, mimetype="image/jpg")
+	return response
+
 	
 def users(request):
 	template = 'frontend/member.html'	
