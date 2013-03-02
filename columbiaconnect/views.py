@@ -54,9 +54,9 @@ def logout_page(request):
      response.delete_cookie('user_location')
      return response
 
-def groups_page(request):
+def create_groups_page(request):
 	stuff = {"categories" : Category.objects.order_by("name")}
-	template = 'frontend/groups.html'
+	template = 'frontend/create_group.html'
 	return render_to_response(template, stuff, context_instance=RequestContext(request))
 		
 def create_group(request):
@@ -78,4 +78,15 @@ def query_page(request):
 		connexes.filter(name__icontains=term)
 		response_data["connexes"] = connexes.values_list('name', flat=True)[0]
 	return HttpResponse(json.dumps(response_data, ensure_ascii=False), content_type="application/json")
+
+def details(request):
+	template = 'frontend/groups.html'
+	targetPage = request.path.strip('/')
+
+	connexes = Connex.objects.filter(name=targetPage)
+	if(connexes):
+		group_category = connexes[0].categories.values_list
+		return render_to_response(template, {'group_name':connexes[0].name, 'group_category':group_category, 'group_description':connexes[0].description})
+	else:
+		return redirect('home')
 	
