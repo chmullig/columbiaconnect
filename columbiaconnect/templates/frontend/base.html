@@ -91,27 +91,81 @@
     			$(this).hide().delay(225*index).fadeIn(750);
 			});
 
-			/*$("select").change(function(){
+			$("select").change(function(){
 				var sortBy = $(this).val();
 				var url = "/query/?sort=" + sortBy;
+				$("#squares").html('');
+				$("#squares").hide().show();
 				$.getJSON(url, function(data) {
-					console.log(data);
+					$.each(data, function(key,val) {	
+						if (val.length != 0) {
+
+							$.each(val, function(key,val){
+								var coolString = '<a href="usergroup/'+val+'"><span class="test"><span class="groupname">'+val+'</span></span></a>'
+							$("#squares").append(coolString);
+							});
+						}
+						else {
+							$("#squares").html('<div style="height: 300px;"></div>');
+						}
+ 					});
+
+ 					$(".test").each(function(index) {
+    					$(this).hide().delay(225*index).fadeIn(750);
+					});
 				});
-			});*/
+			});
+
+
+			$("#searchbar").keyup(function(){
+				var searchstring =$(this).val();
+				var sortMethod = $("select").val();
+				var url = "/query/?search=" + searchstring + "&sort=" + sortMethod;
+				$("#squares").html('');
+				$("#squares").hide().show();
+				$.getJSON(url, function(data) {
+					$.each(data, function(key,val) {	
+						if (val.length != 0) {
+
+							$.each(val, function(key,val){
+								var coolString = '<a href="usergroup/'+val+'"><span class="test"><span class="groupname">'+val+'</span></span></a>'
+							$("#squares").append(coolString);
+							});
+						}
+						else {
+							$("#squares").html('<div style="height: 300px;"></div>');
+						}
+ 					});
+
+ 					$(".test").each(function(index) {
+    					$(this).hide().delay(225*index).fadeIn(750);
+					});
+				});
+			});
 
 			$("#categories a").click(function(e){
 				e.preventDefault();
 				var cat = $(this).html();
-				var url = "/query/?category=" + cat;
+				var sortMethod = $("select").val();
+				var url = "/query/?category=" + cat + "&sort=" + sortMethod;
 				$("#squares").html('');
 				$.getJSON(url, function(data) {
 					$.each(data, function(key,val) {	
-						console.log(val[0]);
-						if (val[0] != null) {
-							var coolString = '<a href="usergroup/'+val+'"><span class="test"><span class="groupname">'+val+'</span></span></a>'
-							$("#squares").append(coolString); 
+						if (val.length != 0) {
+
+							$.each(val, function(key,val){
+								var coolString = '<a href="usergroup/'+val+'"><span class="test"><span class="groupname">'+val+'</span></span></a>'
+							$("#squares").append(coolString);
+							});
+						}
+						else {
+							$("#squares").html('<div style="height: 300px;"></div>');
 						}
  					});
+
+ 					$(".test").each(function(index) {
+    					$(this).hide().delay(225*index).fadeIn(750);
+					});
 				});
 			});
 		});

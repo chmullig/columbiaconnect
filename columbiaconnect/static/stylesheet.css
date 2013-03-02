@@ -126,6 +126,7 @@ header {
 }
 
 #squares {
+	width: 100%;
 	clear: both;
 }
 
