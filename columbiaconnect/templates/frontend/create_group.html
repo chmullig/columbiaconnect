@@ -3,22 +3,23 @@
 
 {%block content%}
 			<div id="hero">
+				<h1 style="margin-top: 210px; margin-left: 25px;">&#187; Create Group</h1>
 			</div>
+			<div style="text-align: center; margin-top: 25px; margin-bottom: 15px; font-weight: bold;">Enter the following information to create your group.</div>
 			<form id="create_group_form" method="post" action = "/create_group_call/">
 				{% csrf_token %}
-				<div id="stuff" style="width: 300px; margin: 25px auto 0 auto;">
-					Category:<br>
-					<select name = "category">
+				<div id="stuff" style="width: 215px; margin: 20px auto 25px auto;">
+					<div style="margin-bottom: 7px;">Category:</div>
+					<select name = "category" style="margin-bottom: 12px;">
 						{% for category in categories %}
 							<option value="{{ category }}"> {{ category }} </option>
 						{%endfor%}
-					</select><br><br>
+					</select>
 					Group Name:
-					<input type="text" name="group_name" class="signup-field">
-					<br/>
+					<input type="text" name="group_name" class="signup-field" class="signup-field">
 					Description:
 					<textarea rows="5" name="description" placeholder="Enter description here." class="signup-field"></textarea>
-					<button type="submit" name="submit" class="big-button">Create Group</button>
+					<button type="submit" name="submit" class="big-button">Submit</button>
 				</div>
 			</form>
 {%endblock%}
