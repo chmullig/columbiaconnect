@@ -13,9 +13,8 @@ import datetime
 def home(request):
 	stuff = {"connexes" : Connex.objects.order_by("name")}
 	template = 'frontend/index.html'
-	now = datetime.datetime.now()
 	if request.user.is_authenticated():
-		stuff.update({'current_date': now,'logged_in': 'YES'})
+		stuff.update({'logged_in': 'YES'})
 	else:
 		stuff.update({'logged_in': 'NO'})		
 	return render_to_response(template, stuff, context_instance=RequestContext(request))
@@ -26,7 +25,7 @@ def login_page(request):
 	user = authenticate(username=username, password=password)
 	print username, password, user, dir(user)
 
-	if user.is_authenticated():
+	if user is not None and user.is_authenticated():
 		print "logged in"
 		login(request, user)
 	return redirect('home')
@@ -83,4 +82,3 @@ def query_page(request):
 		response_data["connexes"] = connexes.values_list('name', flat=True)[0]
 	return HttpResponse(json.dumps(response_data, ensure_ascii=False), content_type="application/json")
 	
-
