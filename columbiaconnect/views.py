@@ -109,7 +109,8 @@ def query_page(request):
 
 def details(request):
 	template = 'frontend/groups.html'
-	targetPage = request.path.strip('usergroup/')
+	targetPage = request.path[11:]
+	print targetPage
 	connexes = Connex.objects.filter(name=targetPage)
 
 	if request.user.is_authenticated():
