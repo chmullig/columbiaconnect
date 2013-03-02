@@ -10,11 +10,15 @@ class Student(models.Model):
     classyear = models.CharField(max_length=10, blank=True)
     profile = models.TextField(blank=True)
 
+class Category(models.Model):
+    name = models.CharField(max_length=100)
+
 class Connex(models.Model):
     name = models.CharField(max_length=100)
     group = models.OneToOneField(Group)
     description = models.TextField(blank=True)
     users = models.ManyToManyField(User, blank=True)
+    categories = models.ManyToManyField(Category, blank=True)
 
     def __str__(self):
         return self.name

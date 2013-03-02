@@ -17,6 +17,7 @@ urlpatterns = patterns('',
     url(r'^home/', home),
     url(r'^login/', login_page),
     url(r'^logout/', logout_page),
+    url(r'^signup/', signup_page),
     url(r'^$', home),
     # Uncomment the admin/doc line below to enable admin documentation:
     url(r'^admin/doc/', include('django.contrib.admindocs.urls')),
