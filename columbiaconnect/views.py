@@ -134,3 +134,6 @@ def users(request):
 		return render_to_response(template, {'member_name':users[0].first_name+" "+users[0].last_name, 'member_email':users[0].email, 'logged_in':lin, 'logged_off': loff, 'user_name':user})
 	else:
 		return redirect('home')
+
+def join_group(request):
+	redirect('home')
