@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>ColumbiaConnect</title>
+		<meta charset="utf-8">
+		<link rel="stylesheet" type="text/css" href="stylesheet.css">
+		<link rel="stylesheet" type="text/css" href="jquery-dropdown.css">
+		<link rel="icon" type="image/ico" href="images/favicon.ico">
+
+		<!-- Fonts -->
+		<link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>
+	</head>
+	<body>
+		<div id="wrapper">
+			<header>
+				<div id="header-left">
+					<a href="index.html" id="logo"></a>
+				</div>
+				<div id="header-right">
+					<a href="#signup" class="header-link fancybox">Sign Up</a> 
+					<a href="#" class="header-link" data-dropdown="#login-menu" data-horizontal-offset="-12" data-vertical-offset="-15">Log In</a> 
+				</div>
+			</header>
+			<div id="hero">
+				<p class="herotext">ColumbiaConnect is the quickest way to find and meet up with other Columbia students with similar interests.</p>
+				<p class="herotext">Browse/search existing groups or create your own below!</p>
+			</div>
+			<div id="main-left">
+				<h1>Featured Groups</h1>
+				<span class="test">Alexklaf jal;skdkj safj;asj k fsajkdfkjallj;kfd jlkfsda;jlkf</span>
+				<span class="test">is</span>
+				<span class="test">a</span>
+				<span class="test">big</span>
+				<span class="test">fat</span>
+				<span class="test">loser</span>
+			</div>
+			<div id="main-right">
+				<form>
+					<input type="search" name="search" results="5" placeholder="Search...">
+				</form>
+				<div id="categories">
+				<h1>Categories</h1>
+				<a href="#">Academics</a> ·
+				<a href="#">Games</a> ·
+				<a href="#">Languages</a>
+				<a href="#">Miscellaneous</a> ·
+				<a href="#">Music</a> ·
+				<a href="#">Sports</a>
+				<a href="#">Weird Sexual Fetishes</a>
+				</div>
+				<hr>
+				<h1>Create New Group</h1>
+				<p>Can't find what you're looking for? <a href="#">Create a new group</a>!</p>
+			</div>
+			<footer>
+				<hr class="footerhr">
+				<p class="footer-text">Created by Chris Mulligan, Alex Dong, & Martin Li<br/>
+				for <a href="http://www.hackcolumbia.org">HackColumbia</a>, Columbia University</p>
+			</footer>
+		</div>
+
+		<section id="signup">
+			<div style="text-align: center; margin-bottom: 25px; font-weight: bold;">Signing up with ColumbiaConnect is easy!</div>
+			<form id="signup-form">
+				Name:
+				<input type="text" name="name" placeholder="John Smith" class="signup-field">
+        		Columbia E-mail:
+        		<input type="email" name="email" placeholder="uni@columbia.edu" class="signup-field">
+        		Password:
+        		<input type="password" name="password" class="signup-field">
+        		Confirm Password:
+        		<input type="password" name="password" class="signup-field">
+        		<button type="submit" name="submit" class="big-button">Sign Up!</button>
+			</form>
+		</section>
+
+		<div id="login-menu" class="dropdown dropdown-tip dropdown-anchor-right">
+			<div class="dropdown-menu">
+				<form>
+	        		<input type="email" name="login" placeholder="E-mail" class="login-field">
+	        		<input type="password" name="password" placeholder="Password" class="login-field">
+	        		<button type="submit" name="submit" class="big-button">Log In</button>
+				</form>
+			</div>
+		</div>
+
+		<!-- jQuery -->
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.js"></script>
+
+		<!-- Fancybox -->
+		<link rel="stylesheet" href="fancybox/source/jquery.fancybox.css?v=2.1.4" type="text/css" media="screen">
+		<script src="fancybox/source/jquery.fancybox.pack.js?v=2.1.4"></script>
+
+		<!-- Fancybox Options -->
+		<script>
+			(function() {
+				$(".fancybox").fancybox({
+					padding: 0
+				});
+			})();
+		</script>
+
+		<script>
+		$(document).ready(function(){
+			$(".test").each(function(index) {
+    			$(this).hide().delay(275*index).fadeIn(750);
+			});
+		});
+		</script>
+
+		<script src="jquery-dropdown.js"></script>
+	</body>
+</html>
