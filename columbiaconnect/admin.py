@@ -21,3 +21,4 @@ admin.site.register(User, UserAdmin)
 
 admin.site.register(Connex)
 admin.site.register(Category)
+admin.site.register(Message)

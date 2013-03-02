@@ -11,7 +11,7 @@ from django.contrib.auth.models import User
 import datetime
 
 def home(request):
-	stuff = {"connexes" : Connex.objects.order_by("name")}
+	stuff = {"connexes" : Connex.objects.order_by("name")[:4]}
 	template = 'frontend/index.html'
 	if request.user.is_authenticated():
 		stuff.update({'logged_in': 'YES'})
@@ -65,7 +65,6 @@ def create_group(request):
 	description = request.POST['description']
 	c = Connex()
 	c.name = group_name
-	c.group_id = 1
 	c.categories = category
 	c.description = description
 	c.save()
