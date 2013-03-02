@@ -5,6 +5,7 @@ from django.template.loader import get_template
 from django.contrib.auth import authenticate, login, logout
 from django.core.context_processors import csrf
 from django.template import Template, RequestContext
+from django.contrib.auth.models import User
 
 import datetime
 
@@ -12,11 +13,11 @@ def home(request):
 	if request.user.is_authenticated():
 		now = datetime.datetime.now()
 		template = 'frontend/index.html'
-		return render_to_response(template, {'current_date': now,'logged_in': 'YES'}, context_instance=RequestContext(request))
+		return render_to_response(template, {'current_date': now,'logged_in': 'YES', 'signed_up': 'NO'}, context_instance=RequestContext(request))
 	else:
 		now = datetime.datetime.now()
 		template = 'frontend/index.html'
-		return render_to_response(template, {'current_date': now,'logged_in': 'NO'}, context_instance=RequestContext(request))
+		return render_to_response(template, {'current_date': now,'logged_in': 'NO', 'signed_up': 'NO'}, context_instance=RequestContext(request))
 
 def login_page(request):
 	username = request.POST['username']
@@ -27,6 +28,23 @@ def login_page(request):
 	if user.is_authenticated():
 		print "logged in"
 		login(request, user)
+	return redirect('home')
+
+def signup_page(request):
+	email = request.POST['email']
+	password = request.POST['password_initial']
+	password_repeat = request.POST['password_repeat']
+	first_name = request.POST['first_name']
+	last_name = request.POST['last_name']
+
+	if password == password_repeat:
+		user = User.objects.create_user(email, email, password)
+		user.first_name = first_name
+		user.last_name = last_name
+		user.save()		
+		now = datetime.datetime.now()
+		template = 'frontend/index.html'
+	
 	return redirect('home')
 
 
