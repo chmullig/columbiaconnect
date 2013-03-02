@@ -90,6 +90,30 @@
 			$(".test").each(function(index) {
     			$(this).hide().delay(225*index).fadeIn(750);
 			});
+
+			/*$("select").change(function(){
+				var sortBy = $(this).val();
+				var url = "/query/?sort=" + sortBy;
+				$.getJSON(url, function(data) {
+					console.log(data);
+				});
+			});*/
+
+			$("#categories a").click(function(e){
+				e.preventDefault();
+				var cat = $(this).html();
+				var url = "/query/?category=" + cat;
+				$("#squares").html('');
+				$.getJSON(url, function(data) {
+					$.each(data, function(key,val) {	
+						console.log(val[0]);
+						if (val[0] != null) {
+							var coolString = '<a href="usergroup/'+val+'"><span class="test"><span class="groupname">'+val+'</span></span></a>'
+							$("#squares").append(coolString); 
+						}
+ 					});
+				});
+			});
 		});
 		</script>
 
