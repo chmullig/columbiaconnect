@@ -14,9 +14,9 @@ def home(request):
 	stuff = {"connexes" : Connex.objects.order_by("name")[:4]}
 	template = 'frontend/index.html'
 	if request.user.is_authenticated():
-		stuff.update({'logged_in': 'YES'})
+		stuff.update({'logged_in': 'inherit', 'logged_off': 'none', 'user_name':request.user})
 	else:
-		stuff.update({'logged_in': 'NO'})		
+		stuff.update({'logged_in': 'none', 'logged_off': 'inherit'})		
 	return render_to_response(template, stuff, context_instance=RequestContext(request))
 
 def login_page(request):
@@ -86,7 +86,26 @@ def details(request):
 	connexes = Connex.objects.filter(name=targetPage)
 	if(connexes):
 		group_category = connexes[0].categories.values_list
-		return render_to_response(template, {'group_name':connexes[0].name, 'group_category':group_category, 'group_description':connexes[0].description})
+		return render_to_response(template, {'group_name':connexes[0].name, 'group_category':group_category,  'group_description':connexes[0].description})
 	else:
 		return redirect('home')
 	
+def users(request):
+	template = 'frontend/member.html'
+	targetPage = request.path[7:]
+	print targetPage
+	users = User.objects.filter(email=targetPage)
+
+	if request.user.is_authenticated():
+		lin = 'inherit'
+		loff = 'none'
+		user = request.user
+	else:
+		lin = 'none'
+		loff = 'inherit'
+		user = ''
+
+	if(users):
+		return render_to_response(template, {'member_name':users[0].first_name+" "+users[0].last_name, 'member_email':users[0].email, 'logged_in':lin, 'logged_off': loff, 'user_name':user})
+	else:
+		return redirect('home')

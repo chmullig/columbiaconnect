@@ -38,12 +38,12 @@ header {
 
 #header-left {
 	float: left;
-	width: 700px;
+	width: 550px;
 	height: 65px;
 }
 #header-right {
 	float: right;
-	width: 225px;
+	width: 450px;
 	height: 65px;
 	line-height: 65px;
 	text-align: right;
