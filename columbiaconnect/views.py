@@ -113,6 +113,7 @@ def details(request):
 	print targetPage
 	connexes = Connex.objects.filter(name=targetPage)
 
+
 	if request.user.is_authenticated():
 		lin = 'inherit'
 		loff = 'none'
