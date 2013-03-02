@@ -11,8 +11,10 @@ from django.db.models import Q
 
 import datetime
 
+LIMIT = 6
+
 def home(request):
-	stuff = {"connexes" : Connex.objects.order_by("name")[:4]}
+	stuff = {"connexes" : Connex.objects.order_by("name")[:LIMIT]}
 	template = 'frontend/index.html'
 	if request.user.is_authenticated():
 		stuff.update({'logged_in': 'inherit', 'logged_off': 'none', 'user_name':request.user})
@@ -78,6 +80,7 @@ def create_group(request):
 	c.categories = [Category.objects.get(name=category)]
 	c.description = description
 	c.save()
+	c.users.add(request.user)
 	return redirect('home')
 
 def query_page(request):
@@ -96,15 +99,14 @@ def query_page(request):
 	if request.GET.has_key("sort"):
 		sortby = request.GET["sort"]
 		if sortby == "Members":
-			#connexes = connexes.order_by(size)
-			pass
+			connexes = connexes.order_by('name')
 		elif sortby == "Date":
-			pass
+			connexes = connexes.order_by('datecreated')
 		elif sortby == "Random":
 			connexes = connexes.order_by('?')
 
 	print connexes
-	response_data["connexes"] = list(connexes.values_list('name', flat=True))
+	response_data["connexes"] = list(connexes[:LIMIT].values_list('name', flat=True))
 	return HttpResponse(json.dumps(response_data, ensure_ascii=False), content_type="application/json")
 
 def details(request):
