@@ -63,14 +63,12 @@ def create_group(request):
 	group_name = request.POST['group_name']
 	category = request.POST['category']
 	description = request.POST['description']
-	c = Connex()
+	c = Connex.objects.create()
 	c.name = group_name
-	c.group_id = 1
-	c.categories = category
+	c.categories = [Category.objects.get(name=category)]
 	c.description = description
 	c.save()
-	return redirect('groups')
-
+	return redirect('home')
 
 def query_page(request):
 	response_data = {}
