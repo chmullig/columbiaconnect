@@ -5,18 +5,19 @@ from django.template.loader import get_template
 from django.contrib.auth import authenticate, login, logout
 from django.core.context_processors import csrf
 from django.template import Template, RequestContext
+from models import *
 
 import datetime
 
 def home(request):
+	stuff = {"connexes" : Connex.objects.order_by("name")}
+	template = 'frontend/index.html'
+	now = datetime.datetime.now()
 	if request.user.is_authenticated():
-		now = datetime.datetime.now()
-		template = 'frontend/index.html'
-		return render_to_response(template, {'current_date': now,'logged_in': 'YES'}, context_instance=RequestContext(request))
+		stuff.update({'current_date': now,'logged_in': 'YES'})
 	else:
-		now = datetime.datetime.now()
-		template = 'frontend/index.html'
-		return render_to_response(template, {'current_date': now,'logged_in': 'NO'}, context_instance=RequestContext(request))
+		stuff.update({'logged_in': 'NO'})		
+	return render_to_response(template, stuff, context_instance=RequestContext(request))
 
 def login_page(request):
 	username = request.POST['username']

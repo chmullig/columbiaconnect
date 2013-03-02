@@ -26,9 +26,9 @@
 			<div id="stuff">
 				<span class="test">{{ current_date }}</span>
 				<span class="test"> {{ logged_in }} </span>
-				<span class="test">Hello</span>
-				<span class="test">Hello</span>
-				<span class="test">Hello</span>
+				{% for connex in connexes %}
+				<span class="test">{{ connex }}</span>
+				{% endfor %}
 			</div>
 		</div>
 

@@ -7,14 +7,17 @@ class UserManager(models.Manager):
 
 class Student(models.Model):
     user = models.OneToOneField(User)
-    classyear = models.CharField(max_length=10)
-    profile = models.TextField()
+    classyear = models.CharField(max_length=10, blank=True)
+    profile = models.TextField(blank=True)
 
 class Connex(models.Model):
     name = models.CharField(max_length=100)
     group = models.OneToOneField(Group)
-    description = models.TextField()
+    description = models.TextField(blank=True)
     users = models.ManyToManyField(User, blank=True)
+
+    def __str__(self):
+        return self.name
 
     class Meta:
         verbose_name_plural = "Connexes"
