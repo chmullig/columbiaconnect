@@ -49,7 +49,7 @@
 
 		<div id="login-menu" class="dropdown dropdown-tip dropdown-anchor-right">
 			<div class="dropdown-menu">
-				<form method="post" action="/home/">
+				<form method="post" action="/login/">
 					{% csrf_token %}
 	        		<input type="text" name="username" placeholder="E-mail" class="login-field">
 	        		<input type="password" name="password" placeholder="Password" class="login-field">
@@ -60,6 +60,7 @@
 				</form>
 			</div>
 		</div>
+		<a href="/logout">Logout!</a>
 
 		<!-- jQuery -->
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.js"></script>
