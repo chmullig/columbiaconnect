@@ -94,10 +94,17 @@ def query_page(request):
 		connexes = connexes.filter(categories=cat)
 
 	if request.GET.has_key("sort"):
-		pass
+		sortby = request.GET["sort"]
+		if sortby == "Members":
+			#connexes = connexes.order_by(size)
+			pass
+		elif sortby == "Date":
+			pass
+		elif sortby == "Random":
+			pass
 
 	print connexes
-	response_data = list(connexes.values_list('name', flat=True))
+	response_data["connexes"] = list(connexes.values_list('name', flat=True))
 	return HttpResponse(json.dumps(response_data, ensure_ascii=False), content_type="application/json")
 
 def details(request):
