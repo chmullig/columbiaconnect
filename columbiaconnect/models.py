@@ -13,9 +13,13 @@ class Student(models.Model):
 class Category(models.Model):
     name = models.CharField(max_length=100)
 
+    class Meta:
+        verbose_name_plural = "Categories"
+
+
 class Connex(models.Model):
     name = models.CharField(max_length=100)
-    group = models.OneToOneField(Group)
+    #group = models.OneToOneField(Group)
     description = models.TextField(blank=True)
     users = models.ManyToManyField(User, blank=True)
     categories = models.ManyToManyField(Category, blank=True)

@@ -1,4 +1,4 @@
-
+import json
 from django.shortcuts import render_to_response, redirect
 from django.http import HttpResponse
 from django.template.loader import get_template
@@ -73,3 +73,14 @@ def hours_ahead(request, offset):
 	
 	"""html = "<html><body> In %s hour(s), it will be %s. </body></html>" % (offset, dt)
 	return HttpResponse(html)"""
+
+def query_page(request):
+	response_data = {}
+	connexes = Connex.objects
+	if request.GET.has_key("search"):
+		term = request.GET.has_key("search")
+		connexes.filter(name__icontains=term)
+		response_data["connexes"] = connexes.values_list('name', flat=True)[0]
+	return HttpResponse(json.dumps(response_data, ensure_ascii=False), content_type="application/json")
+	
+

@@ -5,10 +5,9 @@ from models import *
 from django.contrib import admin
 from django.conf import settings
 from django.contrib.staticfiles.urls import staticfiles_urlpatterns
+
 admin.autodiscover()
 
-
-from views import home
 
 urlpatterns = patterns('',
     # Examples:
@@ -18,6 +17,7 @@ urlpatterns = patterns('',
     url(r'^login/', login_page),
     url(r'^logout/', logout_page),
     url(r'^signup/', signup_page),
+    url(r'^query/', query_page),
     url(r'^$', home),
     # Uncomment the admin/doc line below to enable admin documentation:
     url(r'^admin/doc/', include('django.contrib.admindocs.urls')),

@@ -20,3 +20,4 @@ admin.site.unregister(User)
 admin.site.register(User, UserAdmin)
 
 admin.site.register(Connex)
+admin.site.register(Category)
