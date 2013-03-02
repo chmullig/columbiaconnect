@@ -29,7 +29,7 @@ urlpatterns = patterns('',
         {'document_root': settings.STATIC_ROOT}),
     url(r'^users/.+', users),
     url(r'^usergroup/.+', details),
-    url(r'^join_group/', join_group),
+    url(r'^join_group/.+', join_group),
 )
 
 urlpatterns += staticfiles_urlpatterns()

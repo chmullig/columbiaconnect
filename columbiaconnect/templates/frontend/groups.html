@@ -12,11 +12,12 @@
 				<h1>Message Board</h1>
 			</div>
 			<div id="main-right">
-				<form method="POST" action="/join_group/">
+				<form method="POST" action="/join_group/{{group_name}}">
 					{% csrf_token %}
 					<button type="submit" name="joingroup" class="bigger-button">Join Group</button><br>
 				</form>
 				<h1>Members List</h1>
+					<p> {{members}} </p>
 			</div>
 
 {%endblock%}

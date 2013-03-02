@@ -122,9 +122,13 @@ def details(request):
 		user = ''
 
 	if(connexes):
+		users = connexes[0].users.all()
+		members = ""
+		for user in users:
+			members += (user.email + "\n")
 		group_category = connexes[0].categories.values_list
 		return render_to_response(template,
-				{'group_name':connexes[0].name, 'group_category':group_category,  'group_description':connexes[0].description, 'logged_in':lin, 'logged_off': loff, 'user_name':user}
+				{'group_name':connexes[0].name, 'group_category':group_category,  'group_description':connexes[0].description, 'logged_in':lin, 'logged_off': loff, 'user_name':user, 'members':members}
 				, context_instance=RequestContext(request))
 	else:
 		return redirect('home')
@@ -150,4 +154,11 @@ def users(request):
 		return redirect('home')
 
 def join_group(request):
-	return redirect('home')
+	group_name = request.path[12:]
+	group = Connex.objects.filter(name = group_name)
+	org_site = '/usergroup/' + group_name
+
+	if(group):
+		group[0].users.add(request.user)
+		
+	return redirect(org_site)
