@@ -26,7 +26,7 @@ def login_page(request):
 	user = authenticate(username=username, password=password)
 	print username, password, user, dir(user)
 
-	if user.is_authenticated():
+	if user is not None and user.is_authenticated():
 		print "logged in"
 		login(request, user)
 	return redirect('home')
