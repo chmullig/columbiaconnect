@@ -101,7 +101,7 @@ def query_page(request):
 		elif sortby == "Date":
 			pass
 		elif sortby == "Random":
-			pass
+			connexes = connexes.order_by('?')
 
 	print connexes
 	response_data["connexes"] = list(connexes.values_list('name', flat=True))
