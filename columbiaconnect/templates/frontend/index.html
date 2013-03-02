@@ -1,11 +1,13 @@
+{% extends "admin/app_index.html" %}
+
 <!DOCTYPE html>
 <html>
 	<head>
 		<title>ColumbiaConnect</title>
 		<meta charset="utf-8">
-		<link rel="stylesheet" type="text/css" href="{{ STATIC_URL }}/stylesheet.css">
-		<link rel="stylesheet" type="text/css" href="jquery-dropdown.css">
-		<link rel="icon" type="image/ico" href="images/favicon.ico">
+		<link rel="stylesheet" type="text/css" href="/static/stylesheet.css">
+		<link rel="stylesheet" type="text/css" href="/static/jquery-dropdown.css">
+		<link rel="icon" type="image/ico" href="/static/images/favicon.ico">
 
 		<!-- Fonts -->
 		<link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>
@@ -50,7 +52,7 @@
 		<div id="login-menu" class="dropdown dropdown-tip dropdown-anchor-right">
 			<div class="dropdown-menu">
 				<form>
-	        		<input type="email" name="login" placeholder="E-mail" class="login-field">
+	        		<input type="text" name="login" placeholder="E-mail" class="login-field">
 	        		<input type="password" name="password" placeholder="Password" class="login-field">
 	        		<button type="submit" name="submit" class="big-button">Log In</button>
 				</form>
@@ -61,8 +63,8 @@
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.js"></script>
 
 		<!-- Fancybox -->
-		<link rel="stylesheet" href="fancybox/source/jquery.fancybox.css?v=2.1.4" type="text/css" media="screen">
-		<script src="fancybox/source/jquery.fancybox.pack.js?v=2.1.4"></script>
+		<link rel="stylesheet" href="/static/fancybox/source/jquery.fancybox.css?v=2.1.4" type="text/css" media="screen">
+		<script src="/static/fancybox/source/jquery.fancybox.pack.js?v=2.1.4"></script>
 
 		<!-- Fancybox Options -->
 		<script>
@@ -79,6 +81,6 @@
 		});
 		</script>
 
-		<script src="jquery-dropdown.js"></script>
+		<script src="/static/jquery-dropdown.js"></script>
 	</body>
 </html>
