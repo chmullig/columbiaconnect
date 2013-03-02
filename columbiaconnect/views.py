@@ -12,7 +12,7 @@ from django.db.models import Q
 import datetime
 
 def home(request):
-	stuff = {"connexes" : Connex.objects.order_by("name")[:4]}
+	stuff = {"connexes" : Connex.objects.order_by("name")[:6]}
 	template = 'frontend/index.html'
 	if request.user.is_authenticated():
 		stuff.update({'logged_in': 'inherit', 'logged_off': 'none', 'user_name':request.user})
@@ -78,6 +78,7 @@ def create_group(request):
 	c.categories = [Category.objects.get(name=category)]
 	c.description = description
 	c.save()
+	c.users.add(request.user)
 	return redirect('home')
 
 def query_page(request):
