@@ -119,6 +119,7 @@ header {
 }
 
 select {
+	color: #858585;
 	font-family: Sansation;
 	height: 30px;
 	font-size: 16px;
@@ -227,6 +228,10 @@ p {
 }
 
 a:link, a:visited {
+	transition: 0.25s;
+	-webkit-transition: 0.25s;
+	-moz-transition: 0.25s;
+	-o-transition: 0.25s;
 	text-decoration: none;
 	color: #2371A8;
 }
