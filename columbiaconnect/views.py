@@ -7,6 +7,7 @@ from django.core.context_processors import csrf
 from django.template import Template, RequestContext
 from models import *
 from django.contrib.auth.models import User
+from django.db.models import Q
 
 import datetime
 
@@ -83,13 +84,17 @@ def query_page(request):
 	response_data = {}
 	connexes = Connex.objects
 	if request.GET.has_key("search"):
-		term = request.GET.has_key("search")
-		connexes.filter(name__icontains=term)
+		term = request.GET["search"]
+		connexes = connexes.filter(name__icontains=term) | \
+				connexes.filter(description__icontains=term)
+
 	if request.GET.has_key("category"):
 		catname = request.GET["category"]
 		cat = Category.objects.get(name=catname)
-		print dir(connexes)
-		connexes.filter(categories__id__exact=cat.id)
+		connexes = connexes.filter(categories=cat)
+
+	if request.GET.has_key("sort"):
+		pass
 
 	print connexes
 	response_data["connexes"] = list(connexes.values_list('name', flat=True))
