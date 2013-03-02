@@ -1,5 +1,5 @@
 from django.conf.urls import patterns, include, url
-from columbiaconnect.views import hello, current_datetime, hours_ahead
+from columbiaconnect.views import home, current_datetime, hours_ahead
 # Uncomment the next two lines to enable the admin:
 from django.contrib import admin
 admin.autodiscover()
