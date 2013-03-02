@@ -53,25 +53,24 @@ def logout_page(request):
      response = redirect('home')
      response.delete_cookie('user_location')
      return response
-		
-def current_datetime(request):
-	now = datetime.datetime.now()
-	template = 'dateapp/current_datetime.html'
-	return render_to_response(template, {'current_date': now})
 
-def hours_ahead(request, offset):
-	try:
-		offset = int(offset)
-	except ValueError:
-		raise Http404()
-	dt = datetime.datetime.now() + datetime.timedelta(hours=offset)
-	
-	template = 'dateapp/hours_ahead.html'
-	return render_to_response(template, {'offset': offset, 'from_now': dt})
-	
-	
-	"""html = "<html><body> In %s hour(s), it will be %s. </body></html>" % (offset, dt)
-	return HttpResponse(html)"""
+def groups_page(request):
+	stuff = {"categories" : Category.objects.order_by("name")}
+	template = 'frontend/groups.html'
+	return render_to_response(template, stuff, context_instance=RequestContext(request))
+		
+def create_group(request):
+	group_name = request.POST['group_name']
+	category = request.POST['category']
+	description = request.POST['description']
+	c = Connex()
+	c.name = group_name
+	c.group_id = 1
+	c.categories = category
+	c.description = description
+	c.save()
+	return redirect('groups')
+
 
 def query_page(request):
 	response_data = {}
