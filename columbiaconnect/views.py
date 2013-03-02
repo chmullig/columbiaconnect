@@ -97,7 +97,7 @@ def query_page(request):
 		pass
 
 	print connexes
-	response_data["connexes"] = list(connexes.values_list('name', flat=True))
+	response_data = list(connexes.values_list('name', flat=True))
 	return HttpResponse(json.dumps(response_data, ensure_ascii=False), content_type="application/json")
 
 def details(request):
@@ -116,7 +116,9 @@ def details(request):
 
 	if(connexes):
 		group_category = connexes[0].categories.values_list
-		return render_to_response(template, {'group_name':connexes[0].name, 'group_category':group_category,  'group_description':connexes[0].description, 'logged_in':lin, 'logged_off': loff, 'user_name':user})
+		return render_to_response(template,
+				{'group_name':connexes[0].name, 'group_category':group_category,  'group_description':connexes[0].description, 'logged_in':lin, 'logged_off': loff, 'user_name':user}
+				, context_instance=RequestContext(request))
 	else:
 		return redirect('home')
 	
@@ -139,3 +141,6 @@ def users(request):
 		return render_to_response(template, {'member_name':users[0].first_name+" "+users[0].last_name, 'member_email':users[0].email, 'logged_in':lin, 'logged_off': loff, 'user_name':user})
 	else:
 		return redirect('home')
+
+def join_group(request):
+	return redirect('home')
