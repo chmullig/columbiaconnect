@@ -1,4 +1,5 @@
-import json
+
+import json, os
 from django.shortcuts import render_to_response, redirect
 from django.http import HttpResponse
 from django.template.loader import get_template
@@ -14,7 +15,7 @@ import datetime
 LIMIT = 6
 
 def home(request):
-	stuff = {"connexes" : Connex.objects.order_by("name")[:LIMIT]}
+	stuff = {"connexes" : Connex.objects.order_by("?")[:LIMIT]}
 	template = 'frontend/index.html'
 	if request.user.is_authenticated():
 		stuff.update({'logged_in': 'inherit', 'logged_off': 'none', 'user_name':request.user})
@@ -136,6 +137,17 @@ def details(request):
 				, context_instance=RequestContext(request))
 	else:
 		return redirect('home')
+
+
+def groupimage(request):
+	targetPage = request.path[11:]
+	image_data = open("columbiaconnect/static/crown.jpg").read()
+	imgfile = "columbiaconnect/static/"+targetPage
+	if os.path.exists(imgfile):
+		image_data = open(imgfile).read()
+	response = HttpResponse(image_data, mimetype="image/jpg")
+	return response
+
 	
 def users(request):
 	template = 'frontend/member.html'	
